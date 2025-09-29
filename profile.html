@@ -26,19 +26,17 @@
       object-fit: cover;
     }
 
-    /* Avatar */
+    /* Avatar giữa dưới video */
     .avatar {
       position: absolute;
       bottom: -60px;
-      left: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       border: 5px solid #0d0d0d;
       border-radius: 50%;
       width: 120px;
       height: 120px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background: #000;
     }
     .avatar img {
@@ -61,57 +59,30 @@
       align-items: center;
       gap: 6px;
     }
-    .view-counter span {
-      color: #fff;
-    }
 
     /* Profile info */
     .profile-info {
-      margin-top: 70px;
+      margin-top: 80px; /* đẩy xuống dưới avatar */
       padding: 0 20px;
-      position: relative;
-      z-index: 2;
+      text-align: center;
     }
     .name {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
-      background: linear-gradient(270deg, red, #1e90ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: colorChange 5s infinite alternate;
+      color: #fff;
     }
-    @keyframes colorChange {
-      0% { background: linear-gradient(270deg, red, #1e90ff); }
-      100% { background: linear-gradient(270deg, #1e90ff, red); }
-    }
-
     .about {
       margin-top: 15px;
       padding: 15px;
       background: #1a1a1a;
       border-radius: 10px;
       line-height: 1.6;
+      display: inline-block;
+      text-align: left;
     }
     .about h3 {
       margin-top: 0;
       color: #4da6ff;
-    }
-
-    /* Facebook button */
-    .facebook-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #fff;
-      color: #000;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    .facebook-btn:hover {
-      background: #1877f2;
-      color: #fff;
     }
 
     /* Snow effect */
@@ -136,15 +107,14 @@
 <body>
 
   <div class="cover">
-    <!-- Video bìa -->
-    <video autoplay muted loop>
+    <!-- Video bìa tự chạy -->
+    <video id="bgVideo" autoplay muted loop playsinline>
       <source src="https://files.catbox.moe/wpkwta.mp4" type="video/mp4">
       Trình duyệt của bạn không hỗ trợ video.
     </video>
 
-    <div class="view-counter">
-      👁 <span>100k lượt xem</span>
-    </div>
+    <div class="view-counter">👁 <span>100k lượt xem</span></div>
+
     <div class="avatar">
       <img src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="Avatar">
     </div>
@@ -156,11 +126,24 @@
       <h3>Thông tin</h3>
       <p>Xin chào, mình là obi 👋</p>
       <p>• Đây là web chia sẻ các thông tin học tập 💻</p>
-      <a class="facebook-btn" href="https://www.facebook.com/share/17J6z7ukft/?mibextid=wwXIfr" target="_blank">Facebook mình</a>
+      <p>• Có gì thắc mắc hãy liên hệ FB: 
+        <a href="https://www.facebook.com/share/17J6z7ukft/?mibextid=wwXIfr" target="_blank">Facebook</a> ✨
+      </p>
     </div>
   </div>
 
   <script>
+    // Hỏi bật nhạc
+    window.onload = function() {
+      setTimeout(() => {
+        if (confirm("Bạn có muốn bật nhạc trong video không?")) {
+          let video = document.getElementById("bgVideo");
+          video.muted = false; // bật tiếng
+          video.play();
+        }
+      }, 1000);
+    }
+
     // Hiệu ứng tuyết rơi
     function createSnow() {
       const snow = document.createElement("div");
