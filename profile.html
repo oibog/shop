@@ -28,16 +28,15 @@
 
     /* Avatar giữa dưới video */
     .avatar {
-      position: absolute;
-      bottom: -60px;
-      left: 50%;
-      transform: translateX(-50%);
+      position: relative;
+      margin: -60px auto 0; /* kéo avatar vào giữa dưới video */
       border: 5px solid #0d0d0d;
       border-radius: 50%;
       width: 120px;
       height: 120px;
       overflow: hidden;
       background: #000;
+      z-index: 10;
     }
     .avatar img {
       width: 100%;
@@ -62,15 +61,25 @@
 
     /* Profile info */
     .profile-info {
-      margin-top: 80px; /* đẩy xuống dưới avatar */
+      margin-top: 20px;
       padding: 0 20px;
       text-align: center;
     }
+    /* Chữ đổi màu mượt */
     .name {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
-      color: #fff;
+      background: linear-gradient(270deg, red, #4da6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: gradientMove 3s infinite alternate;
     }
+    @keyframes gradientMove {
+      0% { background-position: 0% }
+      100% { background-position: 100% }
+    }
+
     .about {
       margin-top: 15px;
       padding: 15px;
@@ -83,6 +92,21 @@
     .about h3 {
       margin-top: 0;
       color: #4da6ff;
+    }
+
+    /* Facebook link trắng tròn */
+    .about a {
+      background: white;
+      color: black;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .about a:hover {
+      background: #4da6ff;
+      color: white;
     }
 
     /* Snow effect */
@@ -100,6 +124,7 @@
     @keyframes fall {
       to {
         transform: translateY(100vh);
+        opacity: 0;
       }
     }
   </style>
@@ -114,10 +139,11 @@
     </video>
 
     <div class="view-counter">👁 <span>100k lượt xem</span></div>
+  </div>
 
-    <div class="avatar">
-      <img src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="Avatar">
-    </div>
+  <!-- Avatar căn giữa -->
+  <div class="avatar">
+    <img src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="Avatar">
   </div>
 
   <div class="profile-info">
@@ -126,8 +152,8 @@
       <h3>Thông tin</h3>
       <p>Xin chào, mình là obi 👋</p>
       <p>• Đây là web chia sẻ các thông tin học tập 💻</p>
-      <p>• Có gì thắc mắc hãy liên hệ FB: 
-        <a href="https://www.facebook.com/share/17J6z7ukft/?mibextid=wwXIfr" target="_blank">Facebook</a> ✨
+      <p>• Có gì thắc mắc hãy liên hệ: 
+        <a href="https://www.facebook.com/share/17J6z7ukft/?mibextid=wwXIfr" target="_blank">Facebook mình</a> ✨
       </p>
     </div>
   </div>
