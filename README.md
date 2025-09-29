@@ -5,4 +5,4 @@
 - Dễ sử dụng
 - Thân thiện với người dùng
 
-# Đây là dự án được phát triển bởi obi74z
+Đây là dự án được phát triển bởi obi74z
