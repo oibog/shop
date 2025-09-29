@@ -2,139 +2,112 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>obi74 Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>obi74z</title>
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      background: url("https://sf-static.upanhlaylink.com/img/image_20250926c108fb5db914b843cd573736843573f0.jpg") no-repeat center/cover;
       font-family: Arial, sans-serif;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      background: #0d0d0d;
+      color: #f1f1f1;
+    }
+    .cover {
+      position: relative;
+      width: 100%;
+      height: 250px;
       overflow: hidden;
     }
-
-    /* Avatar chính */
-    .avatar {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      border: 5px solid #00ffff;
+    .cover video {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      box-shadow: 0 0 30px rgba(0,255,255,0.8);
-      margin-bottom: 20px;
-      z-index: 2;
     }
-
-    /* Tên đổi màu nhấp nháy */
-    h1 {
-      margin: 10px 0 5px;
-      font-size: 40px;
-      font-weight: bold;
-      animation: blinkColor 2s infinite;
-      text-shadow: 0 0 15px #000;
+    .avatar {
+      position: absolute;
+      bottom: -60px;
+      left: 20px;
+      border: 5px solid #0d0d0d;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      overflow: hidden;
     }
-
-    @keyframes blinkColor {
-      0% { color: red; }
-      50% { color: cyan; }
-      100% { color: red; }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-
-    /* Đồng hồ */
-    #clock {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 10px;
+    .view-counter {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.6);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .view-counter span {
       color: #fff;
-      text-shadow: 0 0 10px #00ffff;
     }
-
-    /* Nút Facebook */
-    .social {
-      position: absolute;
-      bottom: 50px;
+    .profile-info {
+      margin-top: 70px;
+      padding: 0 20px;
     }
-    .social a {
-      background: white;
-      color: black;
-      padding: 14px 28px;
-      border-radius: 50px;
-      text-decoration: none;
+    .name {
+      font-size: 24px;
       font-weight: bold;
-      font-size: 18px;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+      color: #fff;
     }
-    .social a:hover {
-      background: #00ffff;
-      color: black;
-      box-shadow: 0 0 20px rgba(0,255,255,0.9);
+    .friends {
+      font-size: 14px;
+      color: #999;
     }
-
-    /* Hiệu ứng tuyết */
-    .snowflake {
-      position: absolute;
-      top: -10px;
-      color: white;
-      font-size: 18px;
-      animation: fall 10s linear infinite;
+    .about {
+      margin-top: 15px;
+      padding: 15px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      line-height: 1.6;
     }
-
-    @keyframes fall {
-      0% { transform: translateY(-10px); opacity: 1; }
-      100% { transform: translateY(100vh); opacity: 0; }
+    .about h3 {
+      margin-top: 0;
+      color: #4da6ff;
     }
   </style>
 </head>
 <body>
-  <!-- Avatar -->
-  <img class="avatar" src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="obi74">
 
-  <!-- Chữ obi74 -->
-  <h1>obi74</h1>
+  <div class="cover">
+    <!-- Video bìa bằng link mp4 -->
+    <video autoplay muted loop controls>
+      <source src="https://files.catbox.moe/wpkwta.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
 
-  <!-- Đồng hồ -->
-  <div id="clock"></div>
+    <!-- View counter -->
+    <div class="view-counter">
+      👁 <span>100k lượt xem</span>
+    </div>
 
-  <!-- Nút FB -->
-  <div class="social">
-    <a href="https://facebook.com/" target="_blank">Facebook</a>
+    <div class="avatar">
+      <img src="avatar.jpg" alt="Avatar">
+    </div>
   </div>
 
-  <!-- Nhạc nền -->
-  <audio autoplay loop hidden>
-    <source src="https://www.dropbox.com/s/xxxxxx/music.mp3?dl=1" type="audio/mpeg">
-  </audio>
+  <div class="profile-info">
+    <div class="name">obi74z</div>
+    <div class="friends">iam obi</div>
 
-  <!-- Tạo tuyết -->
-  <script>
-    function createSnowflake() {
-      const snowflake = document.createElement("div");
-      snowflake.classList.add("snowflake");
-      snowflake.textContent = "❄";
-      snowflake.style.left = Math.random() * window.innerWidth + "px";
-      snowflake.style.animationDuration = (5 + Math.random() * 5) + "s";
-      snowflake.style.fontSize = (12 + Math.random() * 12) + "px";
-      document.body.appendChild(snowflake);
-      setTimeout(() => { snowflake.remove(); }, 10000);
-    }
-    setInterval(createSnowflake, 200);
+    <div class="about">
+      <h3>Thông tin</h3>
+      <p>Xin chào, mình là obi 👋</p>
+      <p>• Đây là web chia sẻ các thông tin học tập 💻</p>
+      <p>• Có gì thắc mắc hãy liên hệ FB: https://www.facebook.com/share/17J6z7ukft/?mibextid=wwXIfr ✨</p>
+    </div>
+  </div>
 
-    // Đồng hồ chạy real-time
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2,'0');
-      const m = String(now.getMinutes()).padStart(2,'0');
-      const s = String(now.getSeconds()).padStart(2,'0');
-      document.getElementById("clock").textContent = `${h}:${m}:${s}`;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
 </body>
 </html>
