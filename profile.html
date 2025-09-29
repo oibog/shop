@@ -2,76 +2,112 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>obi74z</title>
+  <title>obi74 Profile</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0d0d0d;
-      color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-    }
-    .profile-card {
-      background: #1a1a1a;
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      width: 350px;
-      box-shadow: 0px 0px 30px rgba(0,255,204,0.3);
-    }
-    .profile-card img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #00ffcc;
-      margin-bottom: 15px;
-      object-fit: cover;
-      background: #000;
-    }
-    h2 {
-      margin: 10px 0;
-      color: #00ffcc;
-    }
-    p {
-      font-size: 14px;
-      color: #aaa;
-      margin-bottom: 20px;
-      word-break: break-word;
-    }
-    .btn-social {
-      display: inline-block;
-      margin: 5px;
-      padding: 10px 15px;
-      border-radius: 8px;
-      background: #00cc66;
+      background: url("https://sf-static.upanhlaylink.com/img/image_20250926c108fb5db914b843cd573736843573f0.jpg") no-repeat center/cover;
+      font-family: Arial, sans-serif;
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn-social:hover {
-      background: #00ff88;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
     }
 
-    /* responsive */
-    @media (max-width: 420px) {
-      .profile-card { width: 90%; padding: 24px; }
-      .profile-card img { width: 96px; height: 96px; }
+    /* Avatar chính */
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #00ffff;
+      object-fit: cover;
+      box-shadow: 0 0 25px rgba(0,255,255,0.7);
+      margin-bottom: 20px;
+      z-index: 2;
+    }
+
+    h1 {
+      margin: 10px 0 5px;
+      font-size: 32px;
+      text-shadow: 0 0 12px #000;
+    }
+
+    p {
+      margin: 5px 0;
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    /* Nút social */
+    .social {
+      position: absolute;
+      bottom: 40px;
+    }
+    .social a {
+      background: rgba(0,0,0,0.5);
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .social a:hover {
+      background: rgba(0,255,255,0.6);
+    }
+
+    /* Hiệu ứng tuyết */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      font-size: 18px;
+      animation: fall 10s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <div class="profile-card">
-    <img src="https://sf-static.upanhlaylink.com/img/image_202509132033bed28c203d85a5f8d04e5da88360.jpg" alt="Avatar">
-    <h2>obi74z</h2>
-    <p>Cheat DDOS Mod...</p>
+  <!-- Avatar -->
+  <img class="avatar" src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="obi74">
 
-    <!-- Chỉ còn nút Facebook, thay link nếu bạn muốn -->
-    <a class="btn-social" href="https://facebook.com/obi74.z" target="_blank" rel="noopener noreferrer">Facebook</a>
+  <!-- Thông tin -->
+  <h1>obi74</h1>
+  <p>obi.</p>
+  <p>🌏 Japan</p>
+
+  <!-- Nút FB -->
+  <div class="social">
+    <a href="https://facebook.com/" target="_blank">Facebook</a>
   </div>
+
+  <!-- Nhạc nền -->
+  <audio autoplay loop hidden>
+    <source src="https://www.dropbox.com/s/xxxxxx/music.mp3?dl=1" type="audio/mpeg">
+  </audio>
+
+  <!-- Tạo tuyết -->
+  <script>
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.textContent = "❄";
+      snowflake.style.left = Math.random() * window.innerWidth + "px";
+      snowflake.style.animationDuration = (5 + Math.random() * 5) + "s";
+      snowflake.style.fontSize = (12 + Math.random() * 12) + "px";
+      document.body.appendChild(snowflake);
+      setTimeout(() => { snowflake.remove(); }, 10000);
+    }
+    setInterval(createSnowflake, 200);
+  </script>
 </body>
 </html>
