@@ -20,45 +20,60 @@
 
     /* Avatar chính */
     .avatar {
-      width: 160px;
-      height: 160px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
-      border: 4px solid #00ffff;
+      border: 5px solid #00ffff;
       object-fit: cover;
-      box-shadow: 0 0 25px rgba(0,255,255,0.7);
+      box-shadow: 0 0 30px rgba(0,255,255,0.8);
       margin-bottom: 20px;
       z-index: 2;
     }
 
+    /* Tên đổi màu nhấp nháy */
     h1 {
       margin: 10px 0 5px;
-      font-size: 32px;
-      text-shadow: 0 0 12px #000;
+      font-size: 40px;
+      font-weight: bold;
+      animation: blinkColor 2s infinite;
+      text-shadow: 0 0 15px #000;
     }
 
-    p {
-      margin: 5px 0;
-      font-size: 18px;
-      color: #ddd;
+    @keyframes blinkColor {
+      0% { color: red; }
+      50% { color: cyan; }
+      100% { color: red; }
     }
 
-    /* Nút social */
+    /* Đồng hồ */
+    #clock {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #fff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    /* Nút Facebook */
     .social {
       position: absolute;
-      bottom: 40px;
+      bottom: 50px;
     }
     .social a {
-      background: rgba(0,0,0,0.5);
-      padding: 12px 24px;
-      border-radius: 12px;
+      background: white;
+      color: black;
+      padding: 14px 28px;
+      border-radius: 50px;
       text-decoration: none;
-      color: white;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
       transition: 0.3s;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
     }
     .social a:hover {
-      background: rgba(0,255,255,0.6);
+      background: #00ffff;
+      color: black;
+      box-shadow: 0 0 20px rgba(0,255,255,0.9);
     }
 
     /* Hiệu ứng tuyết */
@@ -80,10 +95,11 @@
   <!-- Avatar -->
   <img class="avatar" src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="obi74">
 
-  <!-- Thông tin -->
+  <!-- Chữ obi74 -->
   <h1>obi74</h1>
-  <p>obi.</p>
-  <p>🌏 Japan</p>
+
+  <!-- Đồng hồ -->
+  <div id="clock"></div>
 
   <!-- Nút FB -->
   <div class="social">
@@ -108,6 +124,17 @@
       setTimeout(() => { snowflake.remove(); }, 10000);
     }
     setInterval(createSnowflake, 200);
+
+    // Đồng hồ chạy real-time
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2,'0');
+      const m = String(now.getMinutes()).padStart(2,'0');
+      const s = String(now.getSeconds()).padStart(2,'0');
+      document.getElementById("clock").textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
   </script>
 </body>
 </html>
