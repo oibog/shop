@@ -12,17 +12,21 @@
       color: #f1f1f1;
       overflow-x: hidden;
     }
+
+    /* Ảnh bìa */
     .cover {
       position: relative;
       width: 100%;
       height: 250px;
       overflow: hidden;
     }
-    .cover video {
+    .cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
+    /* Avatar */
     .avatar {
       position: absolute;
       bottom: -60px;
@@ -32,12 +36,19 @@
       width: 120px;
       height: 120px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
     }
     .avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 50%;
     }
+
+    /* Bộ đếm lượt xem */
     .view-counter {
       position: absolute;
       top: 10px;
@@ -50,15 +61,30 @@
       align-items: center;
       gap: 6px;
     }
+    .view-counter span {
+      color: #fff;
+    }
+
+    /* Thông tin profile */
     .profile-info {
       margin-top: 70px;
       padding: 0 20px;
+      position: relative;
+      z-index: 2;
     }
     .name {
-      font-size: 24px;
+      font-size: 28px;
       font-weight: bold;
-      color: #fff;
+      background: linear-gradient(270deg, red, #1e90ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: colorChange 5s infinite alternate;
     }
+    @keyframes colorChange {
+      0% { background: linear-gradient(270deg, red, #1e90ff); }
+      100% { background: linear-gradient(270deg, #1e90ff, red); }
+    }
+
     .about {
       margin-top: 15px;
       padding: 15px;
@@ -70,21 +96,52 @@
       margin-top: 0;
       color: #4da6ff;
     }
+
+    /* Nút Facebook */
+    .facebook-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #000;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .facebook-btn:hover {
+      background: #1877f2;
+      color: #fff;
+    }
+
+    /* Hiệu ứng tuyết */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1em;
+      user-select: none;
+      pointer-events: none;
+      z-index: 9999;
+      animation-name: fall;
+      animation-timing-function: linear;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
   </style>
 </head>
 <body>
 
   <div class="cover">
-    <!-- Video bìa tự chạy (im lặng) -->
-    <video id="bgVideo" autoplay muted loop playsinline>
-      <source src="https://files.catbox.moe/wpkwta.mp4" type="video/mp4">
-      Trình duyệt của bạn không hỗ trợ video.
-    </video>
-
-    <div class="view-counter">👁 <span>100k lượt xem</span></div>
-
+    <img src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="Cover">
+    <div class="view-counter">
+      👁 <span>100k lượt xem</span>
+    </div>
     <div class="avatar">
-      <img src="https://sf-static.upanhlaylink.com/img/image_2025092945cd8437d77eb88a33d5b37e80cd7c13.jpg" alt="Avatar">
+      <img src="https://i.ibb.co/G3t1P5W/avatar.jpg" alt="Avatar">
     </div>
   </div>
 
@@ -94,22 +151,26 @@
       <h3>Thông tin</h3>
       <p>Xin chào, mình là obi 👋</p>
       <p>• Đây là web chia sẻ các thông tin học tập 💻</p>
-      <p>• Có gì thắc mắc hãy liên hệ FB: 
-        <a href="https://www.facebook.com/share/17J6z7ukft/?mibextid=wwXIfr" target="_blank">Facebook mình</a> ✨
-      </p>
+      <a class="facebook-btn" href="https://www.facebook.com/share/17J6z7ukft/?mibextid=wwXIfr" target="_blank">Facebook mình</a>
     </div>
   </div>
 
   <script>
-    window.onload = function() {
+    // Hiệu ứng tuyết rơi
+    function createSnow() {
+      const snow = document.createElement("div");
+      snow.classList.add("snowflake");
+      snow.textContent = "❄";
+      snow.style.left = Math.random() * window.innerWidth + "px";
+      snow.style.fontSize = Math.random() * 10 + 10 + "px";
+      snow.style.animationDuration = Math.random() * 5 + 5 + "s";
+      document.body.appendChild(snow);
+
       setTimeout(() => {
-        if (confirm("Bạn có muốn bật nhạc trong video không?")) {
-          let video = document.getElementById("bgVideo");
-          video.muted = false; // bật tiếng
-          video.play();
-        }
-      }, 1000); // sau 1 giây mới hỏi
+        snow.remove();
+      }, 10000);
     }
+    setInterval(createSnow, 200);
   </script>
 
 </body>
